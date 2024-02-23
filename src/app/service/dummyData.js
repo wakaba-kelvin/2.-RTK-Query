@@ -1,38 +1,38 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-export const productsApi = createApi({
-  reducerPath: "products",
-  baseQuery: fetchBaseQuery({ baseUrl: "https://dummyjson.com" }),
+export const postsApi = createApi({
+  reducerPath: "posts",
+  baseQuery: fetchBaseQuery({ baseUrl: "https://jsonplaceholder.typicode.com/" }),
   endpoints: (builder) => ({
-    getAllProduct: builder.query({
-      query: () => "/products",
+    getAllPost: builder.query({
+      query: () => "posts", // Removed the leading "/"
     }),
 
-    getProductById: builder.query({
-      query: (id) => `/products/${id}`,
+    getPostById: builder.query({
+      query: (id) => `posts/${id}`, // Removed the leading "/"
     }),
 
-    addNewProduct: builder.mutation({
-      query: (newProduct) => ({
-        url: `/products/add`,
+    addNewPost: builder.mutation({
+      query: (newpost) => ({
+        url: "posts", // Removed the "/add" and changed method to "POST"
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: newProduct,
+        body: newpost, // Use the newpost directly, assuming it's a valid JSON object
       }),
     }),
 
-    updateProduct: builder.mutation({
-      query: ({ id, updatedProduct }) => ({
-        url: `/products/${id}`,
-        method: "PUT",
+    updatePost: builder.mutation({
+      query: ({ id, updatedPost }) => ({
+        url: `posts/${id}`, // Removed the leading "/"
+        method: "PUT", // Changed the method to "PUT" for update
         headers: { "Content-Type": "application/json" },
-        body: updatedProduct,
+        body: updatedPost,
       }),
     }),
 
-    deleteProduct: builder.mutation({
+    deletePost: builder.mutation({
       query: (id) => ({
-        url: `/products/${id}`,
+        url: `posts/${id}`, // Removed the leading "/"
         method: "DELETE",
       }),
     }),
@@ -40,9 +40,9 @@ export const productsApi = createApi({
 });
 
 export const {
-  useGetAllProductQuery,
-  useGetProductByIdQuery,
-  useAddNewProductMutation,
-  useUpdateProductMutation,
-  useDeleteProductMutation,
-} = productsApi;
+  useGetAllPostQuery,
+  useGetPostByIdQuery,
+  useAddNewPostMutation,
+  useUpdatePostMutation,
+  useDeletePostMutation,
+} = postsApi;

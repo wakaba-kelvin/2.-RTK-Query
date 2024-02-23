@@ -1,17 +1,17 @@
-// import AllProducts from "./components/AllProducts";
-// import SpecificProduct from "./components/SpecificProduct";
-// import AddNewProduct from "./components/AddNewProduct";
-// import UpdateProduct from "./components/UpdateProduct";
-import DeleteProduct from "./components/DeleteProduct";
+import AllPosts from "./components/AllPosts";
+import SpecificPost from "./components/SpecificPost";
+import AddNewPost from "./components/AddNewPost";
+import UpdatePost from "./components/UpdatePost";
+import DeletePost from "./components/DeletePost";
 
 const App = () => {
   return (
     <div>
-      {/* <AllProducts /> */}
-      {/* <SpecificProduct /> */}
-      {/* <AddNewProduct /> */}
-      {/* <UpdateProduct productId={4} /> */}
-      <DeleteProduct productId={2} />
+      <AllPosts /> 
+      <SpecificPost /> 
+      <AddNewPost/>
+      <UpdatePost PostId={4} />
+      <DeletePost PostId={2} />
     </div>
   );
 };
